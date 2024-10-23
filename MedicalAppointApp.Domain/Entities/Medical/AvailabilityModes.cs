@@ -1,17 +1,21 @@
 ﻿using MedicalAppointApp.Domain.Base;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace MedicalAppointmentApp.Domain.Entities.Medical
 {
-    internal class AvailabilityModes : BaseEntity
+    [Table("AvailabilityModes", Schema = "dbo")]
+    public sealed class AvailabilityModes : BaseEntity
     {
-        public string SAvailabilityModeID { get; set; }  //smallint
+        [Key]
+        public string? SAvailabilityModeID { get; set; }  
 
-        public string AvailabilityMode { get; set; }
+        public string? AvailabilityMode { get; set; }
 
         
     }
