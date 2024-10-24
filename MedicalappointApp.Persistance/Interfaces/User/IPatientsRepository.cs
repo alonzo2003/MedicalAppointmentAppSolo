@@ -5,7 +5,7 @@ using MedicalAppointmentApp.Domain.Repositories;
 
 namespace MedicalappointmentApp.Persistance.Interfaces.User
 {
-    public class IPatientsRepository 
+    public interface IPatientsRepository : IBaseRepository<Patients>
     {
     }
 }

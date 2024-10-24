@@ -1,12 +1,14 @@
 ﻿using MedicalAppointmentApp.Domain.Entities.User;
 using MedicalAppointmentApp.Domain.Repositories;
-
+using MedicalAppointmentApp.Domain.Result;
+using System.Linq.Expressions;
 
 namespace MedicalappointmentApp.Persistance.Interfaces.User
 {
-    public class IDoctorsRepository 
-        
+    public interface IDoctorsRepository : IBaseRepository<Doctors>
+
     {
         
+       
     }
 }

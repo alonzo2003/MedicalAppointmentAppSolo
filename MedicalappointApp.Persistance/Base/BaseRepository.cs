@@ -2,13 +2,7 @@
 using MedicalAppointmentApp.Domain.Repositories;
 using MedicalAppointmentApp.Domain.Result;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MedicalappointmentApp.Persistance.Base
 {
@@ -22,25 +16,11 @@ namespace MedicalappointmentApp.Persistance.Base
             _medicalContext = medicalContext;
             this.entities = _medicalContext.Set<TEntity>();
         }
-        public virtual async Task<OperationResult> Exists(Expression<Func<TEntity, bool>> filter)
+        public virtual async Task<bool> Exists(Expression<Func<TEntity, bool>> filter)
         {
-            OperationResult result = new OperationResult();
-
-            try
-            {
-                var exists = await this.entities.AnyAsync(filter);
-                result.Data = exists;
-            }
-            catch (Exception ex)
-            {
-                result.Success = false;
-
-                result.Message = $" Ocurrió un error {ex.Message} verificando que existe el registro";
-            }
-
-            return result;
+            return await this.entities.AnyAsync(filter);
         }
-
+        
         public virtual async Task<OperationResult> GetAll()
         {
             OperationResult result = new OperationResult();
@@ -146,9 +126,6 @@ namespace MedicalappointmentApp.Persistance.Base
             return result;
         }
 
-        Task<bool> IBaseRepository<TEntity>.Exists(Expression<Func<TEntity, bool>> filter)
-        {
-            throw new NotImplementedException();
-        }
+        
     }
 }

@@ -13,10 +13,6 @@
     <Folder Include="Models\Medical\" />
     <Folder Include="Models\User\" />
     <Folder Include="Models\System\" />
-    <Folder Include="Repositories\Insurance\" />
-    <Folder Include="Repositories\Medical\" />
-    <Folder Include="Repositories\User\" />
-    <Folder Include="Repositories\System\" />
   </ItemGroup>
 
   <ItemGroup>
