@@ -1,6 +1,4 @@
 ﻿using MedicalAppointApp.Domain.Base;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -13,7 +11,7 @@ namespace MedicalAppointmentApp.Domain.Entities.User
         [Key]
         public int DoctorId { get; set; } 
 
-        public string? SpecialtyID { get; set; } 
+        public short SpecialtyID { get; set; } 
 
         public string? LicenseNumber { get; set; }
 
@@ -29,7 +27,7 @@ namespace MedicalAppointmentApp.Domain.Entities.User
 
         public string? ClinicAddress { get; set; }
 
-        public string? AvailabilityModeID { get; set; } 
+        public short AvailabilityModeID { get; set; } 
 
         public DateOnly LicenseExpirationDate { get; set; }
 

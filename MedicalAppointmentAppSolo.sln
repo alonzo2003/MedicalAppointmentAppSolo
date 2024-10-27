@@ -13,6 +13,18 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MedicalappointmentApp.Persi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MedicalAppointmentApp.Infraestructure", "MedicalAppointApp.Infraestructure\MedicalAppointmentApp.Infraestructure.csproj", "{BEE40A9B-C6F7-46A1-AB89-51698856FD71}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Api", "Api", "{7816D08B-8755-4A17-AD8E-C7B699D58D6B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MedicalAppointmentApp.Appointment.Api", "MedicalAppointmentAppAppointmentApi\MedicalAppointmentApp.Appointment.Api.csproj", "{7489C0BE-9A21-42D1-90B5-3863A0DC8CEE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MedicalAppointmentApp.Insurance.Api", "MedicalAppointmentApp.Insurance.Api\MedicalAppointmentApp.Insurance.Api.csproj", "{AA71E05C-2E77-43C8-AE91-5EE4B2BC5C52}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MedicalAppointmentApp.Medical.Api", "MedicalAppointmentApp.Medical.Api\MedicalAppointmentApp.Medical.Api.csproj", "{02EF04C9-EED2-4CC1-985A-9C047FC4E258}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MedicalAppointmentApp.System.Api", "MedicalAppointmentApp.System.Api\MedicalAppointmentApp.System.Api.csproj", "{17EB6A65-3870-442A-9282-13EF3B25CCCD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MedicalAppointmentApp.User.Api", "MedicalAppointmentApp.User.Api\MedicalAppointmentApp.User.Api.csproj", "{5F4326B9-9309-4BD9-8E63-A1DEFFC2FAF2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +43,26 @@ Global
 		{BEE40A9B-C6F7-46A1-AB89-51698856FD71}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BEE40A9B-C6F7-46A1-AB89-51698856FD71}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BEE40A9B-C6F7-46A1-AB89-51698856FD71}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7489C0BE-9A21-42D1-90B5-3863A0DC8CEE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7489C0BE-9A21-42D1-90B5-3863A0DC8CEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7489C0BE-9A21-42D1-90B5-3863A0DC8CEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7489C0BE-9A21-42D1-90B5-3863A0DC8CEE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AA71E05C-2E77-43C8-AE91-5EE4B2BC5C52}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA71E05C-2E77-43C8-AE91-5EE4B2BC5C52}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA71E05C-2E77-43C8-AE91-5EE4B2BC5C52}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA71E05C-2E77-43C8-AE91-5EE4B2BC5C52}.Release|Any CPU.Build.0 = Release|Any CPU
+		{02EF04C9-EED2-4CC1-985A-9C047FC4E258}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{02EF04C9-EED2-4CC1-985A-9C047FC4E258}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{02EF04C9-EED2-4CC1-985A-9C047FC4E258}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{02EF04C9-EED2-4CC1-985A-9C047FC4E258}.Release|Any CPU.Build.0 = Release|Any CPU
+		{17EB6A65-3870-442A-9282-13EF3B25CCCD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{17EB6A65-3870-442A-9282-13EF3B25CCCD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{17EB6A65-3870-442A-9282-13EF3B25CCCD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{17EB6A65-3870-442A-9282-13EF3B25CCCD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5F4326B9-9309-4BD9-8E63-A1DEFFC2FAF2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F4326B9-9309-4BD9-8E63-A1DEFFC2FAF2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F4326B9-9309-4BD9-8E63-A1DEFFC2FAF2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F4326B9-9309-4BD9-8E63-A1DEFFC2FAF2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -39,6 +71,11 @@ Global
 		{C3BD0757-48B1-4387-9F85-1B845B6C6F1F} = {8E4D2C79-9356-4CCF-B410-64FAD73CB98C}
 		{D6FD23C9-6D48-4F0D-9FFB-843EF588CF07} = {8E4D2C79-9356-4CCF-B410-64FAD73CB98C}
 		{BEE40A9B-C6F7-46A1-AB89-51698856FD71} = {8E4D2C79-9356-4CCF-B410-64FAD73CB98C}
+		{7489C0BE-9A21-42D1-90B5-3863A0DC8CEE} = {7816D08B-8755-4A17-AD8E-C7B699D58D6B}
+		{AA71E05C-2E77-43C8-AE91-5EE4B2BC5C52} = {7816D08B-8755-4A17-AD8E-C7B699D58D6B}
+		{02EF04C9-EED2-4CC1-985A-9C047FC4E258} = {7816D08B-8755-4A17-AD8E-C7B699D58D6B}
+		{17EB6A65-3870-442A-9282-13EF3B25CCCD} = {7816D08B-8755-4A17-AD8E-C7B699D58D6B}
+		{5F4326B9-9309-4BD9-8E63-A1DEFFC2FAF2} = {7816D08B-8755-4A17-AD8E-C7B699D58D6B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {38C1AEF7-C251-426F-A706-DDB523CFDFEA}

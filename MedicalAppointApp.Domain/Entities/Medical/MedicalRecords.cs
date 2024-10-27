@@ -1,11 +1,7 @@
 ﻿using MedicalAppointApp.Domain.Base;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace MedicalAppointmentApp.Domain.Entities.Medical
 {
@@ -19,9 +15,9 @@ namespace MedicalAppointmentApp.Domain.Entities.Medical
 
         public int DoctorID { get; set; }
 
-        public int Diagnosis { get; set; }//text
+        public string? Diagnosis { get; set; }
         
-        public int Treatment { get; set; } //text
+        public string? Treatment { get; set; } 
 
         public DateTime DateOfVisit { get; set; }
 

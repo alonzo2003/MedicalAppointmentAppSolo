@@ -1,0 +1,6 @@
+@MedicalAppointmentApp.User.Api_HostAddress = http://localhost:5038
+
+GET {{MedicalAppointmentApp.User.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

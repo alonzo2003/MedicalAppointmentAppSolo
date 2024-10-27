@@ -13,7 +13,7 @@ namespace MedicalAppointmentApp.Domain.Entities.Medical
     public sealed class Specialties : BaseEntity
     {
         [Key]
-        public string? SpecialtyID { get; set; } 
+        public short SpecialtyID { get; set; } 
 
         public string? SpecialtyName { get; set; }
 

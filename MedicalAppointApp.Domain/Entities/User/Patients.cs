@@ -1,13 +1,7 @@
 ﻿using MedicalAppointApp.Domain.Base;
-using System;
-using System.Collections.Generic;
-using System.Collections.Specialized;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace MedicalAppointmentApp.Domain.Entities.User
 {
@@ -15,25 +9,25 @@ namespace MedicalAppointmentApp.Domain.Entities.User
     public sealed class Patients : BaseEntity
     {
         [Key]
-        public int PatientID { get; set; } // PK, FK,
+        public int PatientID { get; set; } 
 
         public DateOnly DateOfBirth { get; set; } 
 
-        public string? Gender { get; set; } // char(1)
+        public string? Gender { get; set; } 
 
-        public string? PhoneNumber { get; set; } //15
+        public string? PhoneNumber { get; set; } 
 
-        public string? Address { get; set; } //255
+        public string? Address { get; set; } 
 
-        public string? EmergencyContactName { get; set; } //100
+        public string? EmergencyContactName { get; set; } 
 
-        public string? EmergencyContactPhone {  get; set; } //15
+        public string? EmergencyContactPhone {  get; set; } 
 
-        public string? BloodType { get; set; } //char(2)
+        public string? BloodType { get; set; } 
 
-        public string? Allergies { get; set; } //nvarchar(max)
+        public string? Allergies { get; set; } 
 
-        public int InsuranceProviderID {  get; set; } //FK
+        public int InsuranceProviderID {  get; set; } 
 
        
     }
