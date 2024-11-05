@@ -2,26 +2,22 @@
 using MedicalappointmentApp.Persistance.Context;
 using MedicalappointmentApp.Persistance.Interfaces.Medical;
 using MedicalAppointmentApp.Domain.Entities.Medical;
+using MedicalAppointmentApp.Domain.Result;
 using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MedicalappointmentApp.Persistance.Repositories.Medical
 {
-    public sealed class SpecialtiesRepository : BaseRepository<Specialties>, ISpecialtiesRepository
+    public sealed class SpecialtiesRepository (MedicalContext medicalContext,
+                        ILogger<SpecialtiesRepository> logger) : BaseRepository<Specialties> (medicalContext), ISpecialtiesRepository
     {
-        private readonly MedicalContext context;
-        private readonly ILogger<SpecialtiesRepository> logger;
+        private readonly MedicalContext _medicalContext = medicalContext;
+        private readonly ILogger<SpecialtiesRepository> logger = logger;
 
-        public SpecialtiesRepository(MedicalContext context, ILogger<SpecialtiesRepository> logger) : base(context)
+        public override Task<OperationResult> Save(Specialties entity)
         {
-            this.context = context;
-            this.logger = logger;
+            return base.Save(entity);
         }
-        
-        
+
+
     }
 }

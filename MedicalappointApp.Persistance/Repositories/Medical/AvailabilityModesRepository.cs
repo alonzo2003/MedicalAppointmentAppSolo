@@ -9,18 +9,14 @@ using Microsoft.Extensions.Logging;
 
 namespace MedicalappointmentApp.Persistance.Repositories.Medical
 {
-    public sealed class AvailabilityModesRepository : BaseRepository<AvailabilityModes>, IAvailabilityModesRepository
+    public sealed class AvailabilityModesRepository (MedicalContext medicalContext,
+       ILogger<AvailabilityModesRepository> logger ) : BaseRepository<AvailabilityModes>(medicalContext), IAvailabilityModesRepository
 
         
     {
-        private readonly MedicalContext context;
-        private readonly ILogger<AvailabilityModesRepository> logger;
+        private readonly MedicalContext _medicalContext = medicalContext;
+        private readonly ILogger<AvailabilityModesRepository> logger = logger;
 
-        public AvailabilityModesRepository(MedicalContext context, ILogger<AvailabilityModesRepository> logger) : base(context)
-        {
-            this.context = context;
-            this.logger = logger;
-        }
         public override Task<OperationResult> Save(AvailabilityModes entity)
         {
             return base.Save(entity);

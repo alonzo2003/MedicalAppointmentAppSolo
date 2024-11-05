@@ -16,8 +16,8 @@ namespace MedicalAppointApp.Domain.Entities.Appointment
 
         public int  StatusID { get; set; }
 
-       
-        
+
+        //dbo.Appointments
 
     }
 }

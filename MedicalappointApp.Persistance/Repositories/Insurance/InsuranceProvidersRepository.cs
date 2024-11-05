@@ -8,16 +8,12 @@ using Microsoft.Extensions.Logging;
 
 namespace MedicalappointmentApp.Persistance.Repositories.Insurance
 {
-    public sealed class InsuranceProvidersRepository : BaseRepository <InsuranceProviders>, IInsuranceProvidersRepository
+    public sealed class InsuranceProvidersRepository ( MedicalContext medicalContext,
+                                        ILogger<InsuranceProvidersRepository> logger) : BaseRepository <InsuranceProviders>(medicalContext), IInsuranceProvidersRepository
     {
-        private readonly MedicalContext context;
-        private readonly ILogger<InsuranceProvidersRepository> logger;
+        private readonly MedicalContext _medicalContext = medicalContext;
+        private readonly ILogger<InsuranceProvidersRepository> logger = logger;
 
-        public InsuranceProvidersRepository(MedicalContext context, ILogger<InsuranceProvidersRepository> logger) : base(context)
-        {
-            this.context = context;
-            this.logger = logger;
-        }
 
         public async override Task<OperationResult> Save(InsuranceProviders entity)
         {

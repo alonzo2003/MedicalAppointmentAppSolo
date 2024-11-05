@@ -2,20 +2,21 @@
 using MedicalappointmentApp.Persistance.Context;
 using MedicalappointmentApp.Persistance.Interfaces.System;
 using MedicalAppointmentApp.Domain.Entities.System;
+using MedicalAppointmentApp.Domain.Result;
 using Microsoft.Extensions.Logging;
 
 
 namespace MedicalappointmentApp.Persistance.Repositories.System
 {
-    public sealed class NotificationsRepository : BaseRepository<Notifications>, INotificationsRepository
+    public sealed class NotificationsRepository (MedicalContext medicalContext,
+                        ILogger<NotificationsRepository> logger) : BaseRepository<Notifications>(medicalContext), INotificationsRepository
     {
-        private readonly MedicalContext context;
-        private readonly ILogger<NotificationsRepository> logger;
+        private readonly MedicalContext _medicalContext = medicalContext;
+        private readonly ILogger<NotificationsRepository> logger = logger;
 
-        public NotificationsRepository(MedicalContext context, ILogger<NotificationsRepository> logger) : base(context) 
+        public override Task<OperationResult> Save(Notifications entity)
         {
-            this.context = context;
-            this.logger = logger;
+            return base.Save(entity);
         }
     }
 }

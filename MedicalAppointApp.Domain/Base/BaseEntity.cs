@@ -9,5 +9,7 @@ namespace MedicalAppointApp.Domain.Base
         public DateTime? UpdatedAt { get; set; }
 
         public bool IsActive { get; set; }
+
+        public int? UsuarioModificacion { get; set; }
     }
 }

@@ -1,6 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using MedicalappointmentApp.Persistance.Interfaces.appointment;
+using Microsoft.AspNetCore.Mvc;
 
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+
 
 namespace MedicalAppointmentApp.Appointment.Api.Controllers
 {
@@ -8,11 +9,24 @@ namespace MedicalAppointmentApp.Appointment.Api.Controllers
     [ApiController]
     public class AppointmentsController : ControllerBase
     {
-        // GET: api/<AppointmentsController>
-        [HttpGet]
-        public IEnumerable<string> Get()
+        public IAppointmentsRepository _AppointmentsRepository { get; }
+
+        public AppointmentsController(IAppointmentsRepository appointmentsRepository)
         {
-            return new string[] { "value1", "value2" };
+            _AppointmentsRepository = appointmentsRepository;
+        }
+        // GET api/<AppointmentsController>
+
+        [HttpGet("GetAppointments")]
+        public async Task<IActionResult> Get()
+        {
+            var result = await _AppointmentsRepository.GetAll();
+
+            if (!result.Success)
+               return BadRequest(result);
+            
+
+            return Ok(result);
         }
 
         // GET api/<AppointmentsController>/5

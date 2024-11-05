@@ -204,7 +204,9 @@ namespace MedicalappointmentApp.Persistance.Repositories.Appointment
                                                   DoctorID = appointment.DoctorID,
                                                   StatusID = appointment.StatusID,
                                                   CreatedAt = appointment.CreatedAt,
-                                                  UpdatedAt = appointment.UpdatedAt
+                                                  UpdatedAt = appointment.UpdatedAt,
+                                                  
+                                                
 
                                               }).ToListAsync();
 

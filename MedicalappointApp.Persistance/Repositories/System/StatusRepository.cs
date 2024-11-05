@@ -2,19 +2,22 @@
 using MedicalappointmentApp.Persistance.Context;
 using MedicalappointmentApp.Persistance.Interfaces.System;
 using MedicalAppointmentApp.Domain.Entities.System;
+using MedicalAppointmentApp.Domain.Result;
 using Microsoft.Extensions.Logging;
 
 namespace MedicalappointmentApp.Persistance.Repositories.System
 {
-    public class StatusRepository : BaseRepository<Status>, IStatusRepository
+    public class StatusRepository (MedicalContext medicalContext, 
+        ILogger<StatusRepository> logger) : BaseRepository<Status>(medicalContext), IStatusRepository
     {
-        private readonly MedicalContext context;
-        private readonly ILogger<StatusRepository> logger;
+        private readonly MedicalContext _medicalContext = medicalContext;
+        private readonly ILogger<StatusRepository> logger = logger;
 
-        public StatusRepository(MedicalContext context, ILogger<StatusRepository> logger) : base(context)
+        public async override Task<OperationResult> Save(Status entity)
         {
-            this.context = context;
-            this.logger = logger;
+            return await base.Save(entity);
         }
+
+
     }
 }
