@@ -44,7 +44,7 @@ namespace MedicalappointmentApp.Persistance.Repositories.Appointment
             if (entity.StartTime == TimeOnly.MinValue)
             {
                 operationResult.Success = false;
-                operationResult.Message = "La fecha de la cita es requerida.";
+                operationResult.Message = "La hora de inicio de la cita es requerida.";
                 return operationResult;
             }
             if (entity.EndTime == TimeOnly.MinValue)
@@ -166,7 +166,6 @@ namespace MedicalappointmentApp.Persistance.Repositories.Appointment
                     return operationResult;
                 }
                 doctoravailabilityToRemove.AvailabilityID = 0;
-                doctoravailabilityToRemove.UpdatedAt = DateTime.Now;
                 operationResult = await base.Update(doctoravailabilityToRemove);
             }
             catch (Exception ex) {
@@ -186,7 +185,7 @@ namespace MedicalappointmentApp.Persistance.Repositories.Appointment
             try
             {
                 operationResult.Data = await (from doctoravailability in _medicalContext.DoctorAvailability
-                                              where doctoravailability.IsActive == true
+                                              where doctoravailability.AvailabilityID == 0
                                               select new DoctorsAvailabilityModel()
                                               {
                                                   DoctorID = doctoravailability.DoctorID,
@@ -216,7 +215,7 @@ namespace MedicalappointmentApp.Persistance.Repositories.Appointment
             try
             {
                 result.Data = await (from doctoravailability in this._medicalContext.DoctorAvailability
-                                     where doctoravailability.IsActive == true
+                                     where doctoravailability.AvailabilityID == 0
                                      && doctoravailability.AvailabilityID == Id
                                      select new DoctorsAvailabilityModel()
                                      {

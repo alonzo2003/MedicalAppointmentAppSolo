@@ -1,4 +1,5 @@
-﻿using MedicalappointmentApp.Persistance.Interfaces.appointment;
+﻿using MedicalAppointApp.Domain.Entities.Appointment;
+using MedicalappointmentApp.Persistance.Interfaces.appointment;
 using Microsoft.AspNetCore.Mvc;
 
 
@@ -23,35 +24,54 @@ namespace MedicalAppointmentApp.Appointment.Api.Controllers
             var result = await _AppointmentsRepository.GetAll();
 
             if (!result.Success)
-               return BadRequest(result);
-            
+            {
+                return BadRequest(result);
+            }
 
             return Ok(result);
         }
 
-        // GET api/<AppointmentsController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
+        
+        [HttpGet("GetAppointmentsById")]
+        public async Task<IActionResult> Get(int id)
         {
-            return "value";
+            var result = await _AppointmentsRepository.GetEntityBy( id);
+
+            if (!result.Success)
+            {
+                return BadRequest(result);
+            }
+
+            return Ok(result);
+            
         }
 
-        // POST api/<AppointmentsController>
-        [HttpPost]
-        public void Post([FromBody] string value)
+        
+        [HttpPost("SaveAppointment")]
+        public async Task<IActionResult> Post([FromBody] Appointments appointments)
         {
+            var result = await _AppointmentsRepository.Save(appointments);
+
+            if (!result.Success)
+            {
+                return BadRequest(result);
+            }
+            return Ok(result);
         }
 
         // PUT api/<AppointmentsController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        [HttpPut("UpdateAppointment")]
+        public async Task<IActionResult> Put([FromBody] Appointments appointments)
         {
+            var result = await _AppointmentsRepository.Update(appointments);
+
+            if (!result.Success)
+            {
+                return BadRequest(result);
+            }
+            return Ok(result);
         }
 
-        // DELETE api/<AppointmentsController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
+        
     }
 }

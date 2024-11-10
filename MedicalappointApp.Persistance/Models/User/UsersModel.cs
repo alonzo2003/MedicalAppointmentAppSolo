@@ -21,7 +21,7 @@ namespace MedicalappointmentApp.Persistance.Models.User
 
         public bool IsActive { get; set; }
 
-        public int? UsuarioModificacion { get; set; }
 
+      //  public int? UsuarioModificacion { get; set; }
     }
 }

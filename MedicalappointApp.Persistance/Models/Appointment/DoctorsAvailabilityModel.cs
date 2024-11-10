@@ -12,5 +12,9 @@ namespace MedicalappointmentApp.Persistance.Models.Appointment
 
         public TimeOnly StartTime { get; set; }
         public TimeOnly EndTime { get; set; }
+
+        public DateTime CreatedAt { get; set; }
+
+        public DateTime? UpdatedAt { get; set; }
     }
 }

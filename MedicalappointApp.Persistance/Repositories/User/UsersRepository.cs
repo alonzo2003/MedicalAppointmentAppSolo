@@ -261,10 +261,9 @@ namespace MedicalappointmentApp.Persistance.Repositories.User
                     operationResult.Success = false;
                     operationResult.Message = "El usuario no existe";
                     return operationResult;
-                }      
+                }
                 userToRemove.IsActive = false;
                 userToRemove.UpdatedAt = entity.UpdatedAt;
-                userToRemove.UsuarioModificacion = entity.UsuarioModificacion;
 
                 await base.Update(userToRemove);
             }
@@ -276,6 +275,6 @@ namespace MedicalappointmentApp.Persistance.Repositories.User
             }
             return operationResult;
         }
-           
+
     }
 }

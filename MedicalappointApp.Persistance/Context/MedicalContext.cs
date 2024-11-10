@@ -25,7 +25,7 @@ namespace MedicalappointmentApp.Persistance.Context
         #region "Insurance Entities"
         public DbSet<InsuranceProviders> InsuranceProviders { get; set; }
 
-        public DbSet<NetworkType>  networkTypes { get; set; }
+        public DbSet<NetworkType>  NetworkTypes { get; set; }
 
 
         #endregion
