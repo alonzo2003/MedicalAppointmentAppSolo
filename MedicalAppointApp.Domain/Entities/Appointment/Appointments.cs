@@ -8,11 +8,11 @@ namespace MedicalAppointApp.Domain.Entities.Appointment
     public sealed class Appointments : BaseEntity
     {
         [Key]
-        public int AppointmentsID { get; set; }
-        public int PatientID { get; set; }
+        public int AppointmentID { get; set; }
+        public int PatientID { get; set; } 
 
-        public int DoctorID { get; set; }
-        public DateTime AppointmentDate { get; set; }
+        public int DoctorID { get; set; } 
+        public DateTime AppointmentDate { get; set; } 
 
         public int  StatusID { get; set; }
 

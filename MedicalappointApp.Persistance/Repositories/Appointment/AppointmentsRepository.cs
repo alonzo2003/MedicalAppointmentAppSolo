@@ -28,26 +28,26 @@ namespace MedicalappointmentApp.Persistance.Repositories.Appointment
                 operationResult.Message = "La entidad es requerida.";
                 return operationResult;
             }
-            if (entity.PatientID == 0)
-            {
-                operationResult.Success = false;
-                operationResult.Message = "El paciente es requerido.";
-                return operationResult;
-            }
+            //if (entity.PatientID == 0)
+            //{
+            //    operationResult.Success = false;
+            //    operationResult.Message = "El  Id del paciente es requerido.";
+            //    return operationResult;
+            //}
 
-            if (entity.DoctorID == 0)
-            {
-                operationResult.Success = false;
-                operationResult.Message = "El doctor es requerido.";
-                return operationResult;
-            }
+            //if (entity.DoctorID == 0)
+            //{
+            //    operationResult.Success = false;
+            //    operationResult.Message = "El Id del doctor es requerido.";
+            //    return operationResult;
+            //}
 
-            if (entity.StatusID == 0)
-            {
-                operationResult.Success = false;
-                operationResult.Message = "El estado es requerido.";
-                return operationResult;
-            }
+            //if (entity.StatusID == 0)
+            //{
+            //    operationResult.Success = false;
+            //    operationResult.Message = "El estado es requerido.";
+            //    return operationResult;
+            //}
             if (entity.AppointmentDate == DateTime.MinValue)
             {
                 operationResult.Success = false;
@@ -116,7 +116,7 @@ namespace MedicalappointmentApp.Persistance.Repositories.Appointment
 
             try
             {
-                Appointments? appointmentsToUpdate = await _medicalContext.Appointments.Where(a => a.AppointmentsID == entity.AppointmentsID).FirstOrDefaultAsync();
+                Appointments? appointmentsToUpdate = await _medicalContext.Appointments.Where(a => a.AppointmentID == entity.AppointmentID).FirstOrDefaultAsync();
 
                 if (appointmentsToUpdate == null)
                 {
@@ -166,7 +166,7 @@ namespace MedicalappointmentApp.Persistance.Repositories.Appointment
             }
             try
             {
-                Appointments? appointmentToRemove = await _medicalContext.Appointments.FirstOrDefaultAsync(a => a.AppointmentsID == entity.AppointmentsID);
+                Appointments? appointmentToRemove = await _medicalContext.Appointments.FirstOrDefaultAsync(a => a.AppointmentID == entity.AppointmentID);
 
                 if (appointmentToRemove == null)
                 {
@@ -198,7 +198,7 @@ namespace MedicalappointmentApp.Persistance.Repositories.Appointment
                                               orderby appointment.AppointmentDate descending
                                               select new AppointmentsModel()
                                               {
-                                                  AppointmentsID = appointment.AppointmentsID,
+                                                  AppointmentID = appointment.AppointmentID,
                                                   AppointmentDate = appointment.AppointmentDate,
                                                   PatientID = appointment.PatientID,
                                                   DoctorID = appointment.DoctorID,
@@ -229,10 +229,10 @@ namespace MedicalappointmentApp.Persistance.Repositories.Appointment
                 operationResult.Data = await (from appointments in _medicalContext.Appointments
                                               join doctoravailability in _medicalContext.DoctorAvailability on appointments.DoctorID equals doctoravailability.DoctorID
                                               where appointments.IsActive == true
-                                              && appointments.AppointmentsID == Id
+                                              && appointments.AppointmentID == Id
                                               select new AppointmentsModel()
                                               {
-                                                  AppointmentsID = appointments.AppointmentsID,
+                                                  AppointmentID = appointments.AppointmentID,
                                                   DoctorID = appointments.DoctorID,
                                                   StatusID = appointments.StatusID,
                                                   CreatedAt = appointments.CreatedAt,

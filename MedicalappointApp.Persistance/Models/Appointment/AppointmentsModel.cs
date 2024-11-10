@@ -3,7 +3,7 @@ namespace MedicalappointmentApp.Persistance.Models.Appointment
 {
     public class AppointmentsModel
     {
-        public int AppointmentsID { get; set; }
+        public int AppointmentID { get; set; }
         public int PatientID { get; set; }
 
         public int DoctorID { get; set; }

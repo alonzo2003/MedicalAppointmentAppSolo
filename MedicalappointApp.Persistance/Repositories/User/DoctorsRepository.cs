@@ -19,5 +19,24 @@ namespace MedicalappointmentApp.Persistance.Repositories.User
         {
             return await base.Save(entity);
         }
+        public override Task<OperationResult> GetAll()
+        {
+            return base.GetAll();
+        }
+        public override Task<OperationResult> GetEntityBy(int Id)
+        {
+            return base.GetEntityBy(Id);
+        }
+        public override Task<OperationResult> Update(Doctors entity)
+        {
+            return base.Update(entity);
+
+        }
+        public override Task<OperationResult> Remove(Doctors entity)
+        {
+            return base.Remove(entity);
+        }
+
     }
-}
+    
+} 

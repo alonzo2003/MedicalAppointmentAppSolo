@@ -122,7 +122,7 @@ namespace MedicalappointmentApp.Persistance.Repositories.User
                 return operationResult;
             }
 
-            // Validar LastName
+            
             if (string.IsNullOrWhiteSpace(entity.LastName))
             {
                 operationResult.Success = false;
@@ -130,7 +130,6 @@ namespace MedicalappointmentApp.Persistance.Repositories.User
                 return operationResult;
             }
 
-            // Validar Email
             if (string.IsNullOrWhiteSpace(entity.Email))
             {
                 operationResult.Success = false;

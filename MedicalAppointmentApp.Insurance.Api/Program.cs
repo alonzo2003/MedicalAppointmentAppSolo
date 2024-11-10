@@ -1,4 +1,6 @@
 using MedicalappointmentApp.Persistance.Context;
+using MedicalappointmentApp.Persistance.Interfaces.Insurance;
+using MedicalappointmentApp.Persistance.Repositories.Insurance;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -7,6 +9,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<MedicalContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("MedicalDb")));
 
 //Registro de dependencias repositorios
+builder.Services.AddScoped<IInsuranceProvidersRepository, InsuranceProvidersRepository>();
+builder.Services.AddScoped<INetworkTypeRepository, NetworkTypeRepository>();
 
 //Registro de dependencias servicios 
 

@@ -14,4 +14,8 @@
     <ProjectReference Include="..\MedicalappointApp.Persistance\MedicalappointmentApp.Persistance.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Controllers\" />
+  </ItemGroup>
+
 </Project>

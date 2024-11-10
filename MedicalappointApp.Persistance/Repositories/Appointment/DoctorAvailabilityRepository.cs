@@ -215,8 +215,7 @@ namespace MedicalappointmentApp.Persistance.Repositories.Appointment
             try
             {
                 result.Data = await (from doctoravailability in this._medicalContext.DoctorAvailability
-                                     where doctoravailability.AvailabilityID == 0
-                                     && doctoravailability.AvailabilityID == Id
+                                     where doctoravailability.AvailabilityID == Id
                                      select new DoctorsAvailabilityModel()
                                      {
                                          DoctorID = doctoravailability.DoctorID,
