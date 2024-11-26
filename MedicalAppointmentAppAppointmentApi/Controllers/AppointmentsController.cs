@@ -72,6 +72,18 @@ namespace MedicalAppointmentApp.Appointment.Api.Controllers
             return Ok(result);
         }
 
-        
+
+        [HttpPost("DisableAppointments")]
+
+        public async Task<IActionResult> DisableAppointment(Appointments appointments)
+        {
+            var result = await _AppointmentsRepository.Remove(appointments);
+
+            if (!result.Success)
+             return BadRequest(result); 
+            return Ok(result);
+        }
+
+
     }
 }

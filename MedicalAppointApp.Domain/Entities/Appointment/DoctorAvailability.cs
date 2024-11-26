@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace MedicalAppointApp.Domain.Entities.Appointment
 {
     [Table("DoctorAvailability", Schema = "appointments")]
-    public sealed class DoctorAvailability 
+    public sealed class DoctorAvailability : BaseEntity
     {
         [Key]
         public int AvailabilityID { get; set; }

@@ -7,10 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Contracts\" />
-    <Folder Include="Core\" />
-    <Folder Include="Dtos\" />
-    <Folder Include="Services\" />
+    <Folder Include="Dtos\Appointment\Appointments\" />
+    <Folder Include="Responses\Appointment\Appointments\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MedicalappointApp.Persistance\MedicalappointmentApp.Persistance.csproj" />
   </ItemGroup>
 
 </Project>

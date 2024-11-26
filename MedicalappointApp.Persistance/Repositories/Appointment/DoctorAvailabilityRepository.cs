@@ -65,7 +65,7 @@ namespace MedicalappointmentApp.Persistance.Repositories.Appointment
                                    && doctorAvailability.AvailabilityID ==  entity.AvailabilityID))
             {
                 operationResult.Success = false;
-                operationResult.Message = "Ya existe una ";
+                operationResult.Message = "Ya existe una con estas indicaciones";
                 return operationResult;
             }
 
@@ -185,7 +185,7 @@ namespace MedicalappointmentApp.Persistance.Repositories.Appointment
             try
             {
                 operationResult.Data = await (from doctoravailability in _medicalContext.DoctorAvailability
-                                              where doctoravailability.AvailabilityID == 0
+                                              where doctoravailability.AvailabilityID != 0
                                               select new DoctorsAvailabilityModel()
                                               {
                                                   DoctorID = doctoravailability.DoctorID,
