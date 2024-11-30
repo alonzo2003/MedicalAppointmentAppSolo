@@ -33,9 +33,15 @@ namespace MedicalAppointment.Application.Services.Appointment
             {
                 var result = await _doctorAvailabilityRepository.GetAll();
 
-                doctorAvailabilityResponse.IsSuccess = result.Success;
-                doctorAvailabilityResponse.Model = result.Data;
+                if (!result.Success)
+                {
+                    doctorAvailabilityResponse.Message = result.Message;
+                    doctorAvailabilityResponse.IsSuccess = result.Success;
+                    return doctorAvailabilityResponse;
+                }
+                doctorAvailabilityResponse.Data = result.Data;
             }
+
             catch (Exception ex)
             {
                 doctorAvailabilityResponse.IsSuccess = false;
@@ -59,7 +65,7 @@ namespace MedicalAppointment.Application.Services.Appointment
                     doctorAvailabilityResponse.IsSuccess = result.Success;
                     return doctorAvailabilityResponse;
                 }
-                doctorAvailabilityResponse.Model = result.Data;
+                doctorAvailabilityResponse.Data = result.Data;
             }
             catch (Exception ex)
             {
@@ -85,21 +91,51 @@ namespace MedicalAppointment.Application.Services.Appointment
                 doctorAvailability.StartTime = dto.StartTime;
                 doctorAvailability.EndTime = dto.EndTime;
 
-                var result = _doctorAvailabilityRepository.Save(doctorAvailability);
+                var result = await _doctorAvailabilityRepository.Save(doctorAvailability);
 
-                doctorAvailabilityResponse.Message = "";
             }
             catch (Exception ex) {
+
                 doctorAvailabilityResponse.IsSuccess = false;
-                doctorAvailabilityResponse.Message = "Error guardando la disponibilidad.";
+                doctorAvailabilityResponse.Message = "Error guardando la disponibilidad del doctor.";
                 _logger.LogError(doctorAvailabilityResponse.Message, ex.ToString());
             }
             return doctorAvailabilityResponse;
         }
 
-        public Task<DoctorAvailabilityResponse> UpdateAsync(DoctorAvailabilityUpdateDto dto)
+        public async Task<DoctorAvailabilityResponse> UpdateAsync(DoctorAvailabilityUpdateDto dto)
         {
-            throw new NotImplementedException();
+            DoctorAvailabilityResponse doctorAvailabilityResponse = new DoctorAvailabilityResponse();
+
+            try
+            {
+                var resultGetById = await _doctorAvailabilityRepository.GetEntityBy(dto.AvailabilityID);
+
+                if (!resultGetById.Success)
+                {
+                    doctorAvailabilityResponse.IsSuccess = resultGetById.Success;
+                    doctorAvailabilityResponse.Message = resultGetById.Message;
+                    return doctorAvailabilityResponse;
+                }
+
+                DoctorAvailability doctorAvailability = (DoctorAvailability)resultGetById.Data;
+
+                doctorAvailability.AvailabilityID = dto.AvailabilityID;
+                doctorAvailability.StartTime = dto.StartTime;
+                doctorAvailability.EndTime = dto.EndTime;
+                doctorAvailability.AvailableDate = dto.AvailableDate;
+                doctorAvailability.UpdatedAt = dto.UpdatedAt;
+                doctorAvailability.IsActive = dto.IsActive;
+
+                var result = await _doctorAvailabilityRepository.Update(doctorAvailability);
+            }
+            catch (Exception ex)
+            {
+                doctorAvailabilityResponse.IsSuccess = false;
+                doctorAvailabilityResponse.Message = "Error actualizando las disponibilidades";
+                _logger.LogError(doctorAvailabilityResponse.Message, ex.ToString());
+            }
+            return doctorAvailabilityResponse;
         }
     }
 }

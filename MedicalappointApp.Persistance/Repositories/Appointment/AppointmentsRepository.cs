@@ -28,26 +28,26 @@ namespace MedicalappointmentApp.Persistance.Repositories.Appointment
                 operationResult.Message = "La entidad es requerida.";
                 return operationResult;
             }
-            //if (entity.PatientID == 0)
-            //{
-            //    operationResult.Success = false;
-            //    operationResult.Message = "El  Id del paciente es requerido.";
-            //    return operationResult;
-            //}
+            if (entity.PatientID == 0)
+            {
+                operationResult.Success = false;
+                operationResult.Message = "El  Id del paciente es requerido.";
+                return operationResult;
+            }
 
-            //if (entity.DoctorID == 0)
-            //{
-            //    operationResult.Success = false;
-            //    operationResult.Message = "El Id del doctor es requerido.";
-            //    return operationResult;
-            //}
+            if (entity.DoctorID == 0)
+            {
+                operationResult.Success = false;
+                operationResult.Message = "El Id del doctor es requerido.";
+                return operationResult;
+            }
 
-            //if (entity.StatusID == 0)
-            //{
-            //    operationResult.Success = false;
-            //    operationResult.Message = "El estado es requerido.";
-            //    return operationResult;
-            //}
+            if (entity.StatusID == 0)
+            {
+                operationResult.Success = false;
+                operationResult.Message = "El estado es requerido.";
+                return operationResult;
+            }
             if (entity.AppointmentDate == DateTime.MinValue)
             {
                 operationResult.Success = false;
@@ -158,7 +158,7 @@ namespace MedicalappointmentApp.Persistance.Repositories.Appointment
                 operationResult.Message = "El estado es requerido";
                 return operationResult;
             }
-            if (entity.AppointmentDate == DateTime.MinValue) 
+            if (entity.AppointmentDate == DateTime.MinValue)
             {
                 operationResult.Success = false;
                 operationResult.Message = "La fecha de la cita es requerida";
@@ -179,7 +179,7 @@ namespace MedicalappointmentApp.Persistance.Repositories.Appointment
 
                 operationResult = await base.Update(appointmentToRemove);
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
                 operationResult.Success = false;
                 operationResult.Message = "Error eliminado la cita.";
@@ -205,8 +205,8 @@ namespace MedicalappointmentApp.Persistance.Repositories.Appointment
                                                   StatusID = appointment.StatusID,
                                                   CreatedAt = appointment.CreatedAt,
                                                   UpdatedAt = appointment.UpdatedAt,
-                                                  
-                                                
+
+
 
                                               }).ToListAsync();
 
@@ -240,8 +240,8 @@ namespace MedicalappointmentApp.Persistance.Repositories.Appointment
                                                   PatientID = appointments.PatientID,
                                                   AppointmentDate = appointments.AppointmentDate
 
-                                              }).FirstOrDefaultAsync(); 
-                                              
+                                              }).FirstOrDefaultAsync();
+
             }
             catch (Exception ex)
             {
@@ -252,9 +252,32 @@ namespace MedicalappointmentApp.Persistance.Repositories.Appointment
             return operationResult;
         }
 
+        public async Task<OperationResult> GetAppointmentsById(int appointmentId)
+        {
+            OperationResult result = new OperationResult();
 
+            try
+            {
+                Appointments? appointments = await _medicalContext.Appointments.FindAsync(appointmentId);
 
+                if (appointments == null)
+                {
+                    result.Success = false;
+                    result.Message = "La Cita no se encuentra registrada";
+                    return result;
+                }
 
+                result.Data = appointmentId;
+            }
+            catch (Exception ex)
+            {
+                result.Message = "Ocurrio un error obteniendo las citas";
+                result.Success = false;
+                this.logger.LogError(result.Message, ex.ToString());
+            }
+            return result;
+
+        }
     }
 
 }

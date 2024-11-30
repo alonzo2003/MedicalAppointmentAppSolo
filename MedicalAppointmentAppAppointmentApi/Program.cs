@@ -2,6 +2,7 @@ using MedicalappointmentApp.Persistance.Context;
 using MedicalappointmentApp.Persistance.Interfaces.appointment;
 using MedicalappointmentApp.Persistance.Interfaces.Appointment;
 using MedicalappointmentApp.Persistance.Repositories.Appointment;
+using MedicalAppointmentApp.IOC.Dependencies.Appointment;
 using Microsoft.EntityFrameworkCore;
 
 
@@ -14,9 +15,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<MedicalContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("MedicalDb")));
 
 //Registro de dependencias repositorios de appointments
-builder.Services.AddScoped<IAppointmentsRepository, AppointmentsRepository>();
-builder.Services.AddScoped<IDoctorAvailabilityRepository, DoctorAvailabilityRepository>();
-
+builder.Services.AddAppointmentDependency();
 
 
 builder.Services.AddControllers();

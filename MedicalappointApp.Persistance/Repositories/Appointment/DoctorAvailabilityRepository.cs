@@ -235,6 +235,34 @@ namespace MedicalappointmentApp.Persistance.Repositories.Appointment
             return result;
 
         }
+
+        public async Task<OperationResult> GetDoctorAvailabilityById(int availabilityId)
+        {
+
+            OperationResult result = new OperationResult();
+
+            try
+            {
+                DoctorAvailability? doctorAvailability = await _medicalContext.DoctorAvailability.FindAsync(availabilityId);
+
+                if (doctorAvailability == null)
+                {
+                    result.Success = false;
+                    result.Message = "La Disponibilidad del doctor no se encuentra registrada";
+                    return result;
+                }
+
+                result.Data = availabilityId;
+            }
+            catch (Exception ex)
+            {
+                result.Message = "Ocurrio un error obteniendo las disponibilidades del doctor;";
+                result.Success = false;
+                this.logger.LogError(result.Message, ex.ToString());
+            }
+            return result;
+
+        }
     }
 
 }
