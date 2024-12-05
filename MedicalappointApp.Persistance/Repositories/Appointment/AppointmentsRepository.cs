@@ -194,7 +194,6 @@ namespace MedicalappointmentApp.Persistance.Repositories.Appointment
             try
             {
                 operationResult.Data = await (from appointment in _medicalContext.Appointments
-                                              where appointment.IsActive == true
                                               orderby appointment.AppointmentDate descending
                                               select new AppointmentsModel()
                                               {
@@ -205,10 +204,7 @@ namespace MedicalappointmentApp.Persistance.Repositories.Appointment
                                                   StatusID = appointment.StatusID,
                                                   CreatedAt = appointment.CreatedAt,
                                                   UpdatedAt = appointment.UpdatedAt,
-
-
-
-                                              }).ToListAsync();
+                                              }).AsNoTracking().FirstOrDefaultAsync();
 
             }
             catch (Exception ex)
@@ -228,8 +224,7 @@ namespace MedicalappointmentApp.Persistance.Repositories.Appointment
             {
                 operationResult.Data = await (from appointments in _medicalContext.Appointments
                                               join doctoravailability in _medicalContext.DoctorAvailability on appointments.DoctorID equals doctoravailability.DoctorID
-                                              where appointments.IsActive == true
-                                              && appointments.AppointmentID == Id
+                                              where appointments.AppointmentID == Id
                                               select new AppointmentsModel()
                                               {
                                                   AppointmentID = appointments.AppointmentID,
@@ -240,7 +235,7 @@ namespace MedicalappointmentApp.Persistance.Repositories.Appointment
                                                   PatientID = appointments.PatientID,
                                                   AppointmentDate = appointments.AppointmentDate
 
-                                              }).FirstOrDefaultAsync();
+                                              }).AsNoTracking().FirstOrDefaultAsync();
 
             }
             catch (Exception ex)

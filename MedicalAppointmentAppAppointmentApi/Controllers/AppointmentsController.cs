@@ -12,7 +12,7 @@ namespace MedicalAppointmentApp.Appointment.Api.Controllers
     [ApiController]
     public class AppointmentsController : ControllerBase
     {
-        public readonly IAppointmentsService _appointmentsService;
+        private readonly IAppointmentsService _appointmentsService;
 
         public AppointmentsController(IAppointmentsService appointmentsService)
         {
@@ -61,7 +61,7 @@ namespace MedicalAppointmentApp.Appointment.Api.Controllers
             return Ok(result);
         }
 
-        // PUT api/<AppointmentsController>/5
+
         [HttpPut("UpdateAppointment")]
         public async Task<IActionResult> Put([FromBody] AppointmentsUpdateDto appointmentsUpdate)
         {

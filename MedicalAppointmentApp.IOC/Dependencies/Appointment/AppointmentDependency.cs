@@ -17,6 +17,8 @@ namespace MedicalAppointmentApp.IOC.Dependencies.Appointment
             service.AddScoped<IDoctorAvailabilityRepository, DoctorAvailabilityRepository>();
 
             service.AddTransient<IAppointmentsService, AppointmentsService>();
+
+            service.AddTransient<IDoctorAvailabilityService, DoctorAvailabilityService>();
         }
     }
 }
