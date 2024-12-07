@@ -1,12 +1,6 @@
 using MedicalappointmentApp.Persistance.Context;
-using MedicalappointmentApp.Persistance.Interfaces.appointment;
-using MedicalappointmentApp.Persistance.Interfaces.Appointment;
-using MedicalappointmentApp.Persistance.Repositories.Appointment;
 using MedicalAppointmentApp.IOC.Dependencies.Appointment;
 using Microsoft.EntityFrameworkCore;
-
-
-
 
 
 var builder = WebApplication.CreateBuilder(args);

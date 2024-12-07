@@ -41,13 +41,6 @@ namespace MedicalappointmentApp.Persistance.Repositories.Appointment
                 operationResult.Message = "El Id del doctor es requerido.";
                 return operationResult;
             }
-
-            if (entity.StatusID == 0)
-            {
-                operationResult.Success = false;
-                operationResult.Message = "El estado es requerido.";
-                return operationResult;
-            }
             if (entity.AppointmentDate == DateTime.MinValue)
             {
                 operationResult.Success = false;
@@ -194,7 +187,7 @@ namespace MedicalappointmentApp.Persistance.Repositories.Appointment
             try
             {
                 operationResult.Data = await (from appointment in _medicalContext.Appointments
-                                              orderby appointment.AppointmentDate descending
+                                              orderby appointment.CreatedAt descending
                                               select new AppointmentsModel()
                                               {
                                                   AppointmentID = appointment.AppointmentID,
@@ -204,7 +197,7 @@ namespace MedicalappointmentApp.Persistance.Repositories.Appointment
                                                   StatusID = appointment.StatusID,
                                                   CreatedAt = appointment.CreatedAt,
                                                   UpdatedAt = appointment.UpdatedAt,
-                                              }).AsNoTracking().FirstOrDefaultAsync();
+                                              }).AsNoTracking().ToListAsync();
 
             }
             catch (Exception ex)

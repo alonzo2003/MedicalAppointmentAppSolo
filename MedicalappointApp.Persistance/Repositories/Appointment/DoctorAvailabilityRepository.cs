@@ -185,7 +185,7 @@ namespace MedicalappointmentApp.Persistance.Repositories.Appointment
             try
             {
                 operationResult.Data = await (from doctoravailability in _medicalContext.DoctorAvailability
-                                              where doctoravailability.AvailabilityID != 0
+                                              orderby doctoravailability.AvailableDate descending
                                               select new DoctorsAvailabilityModel()
                                               {
                                                   DoctorID = doctoravailability.DoctorID,
@@ -193,7 +193,7 @@ namespace MedicalappointmentApp.Persistance.Repositories.Appointment
                                                   StartTime = doctoravailability.StartTime,
                                                   EndTime = doctoravailability.EndTime,
                                                   AvailabilityID = doctoravailability.AvailabilityID,
-                                              }).AsNoTracking().FirstOrDefaultAsync();
+                                              }).AsNoTracking().ToListAsync();
                                               
 
             }

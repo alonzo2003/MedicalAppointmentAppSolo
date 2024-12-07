@@ -17,10 +17,10 @@ namespace MedicalAppointment.Application.Services.Appointment
         public DoctorAvailabilityService(IDoctorAvailabilityRepository doctorAvailabilityRepository,
                                          ILogger<DoctorAvailabilityService> logger)
         {
-            //if (doctorAvailabilityRepository is null)
-            //{
-            //    throw new ArgumentNullException(nameof(doctorAvailabilityRepository));
-            //}
+            if (doctorAvailabilityRepository is null)
+            {
+                throw new ArgumentNullException(nameof(doctorAvailabilityRepository));
+            }
 
             _doctorAvailabilityRepository = doctorAvailabilityRepository;
             _logger = logger;
@@ -92,6 +92,7 @@ namespace MedicalAppointment.Application.Services.Appointment
                 doctorAvailability.EndTime = dto.EndTime;
 
                 var result = await _doctorAvailabilityRepository.Save(doctorAvailability);
+                result.Message = "La disponibilidad del doctor fue creada";
 
             }
             catch (Exception ex) {

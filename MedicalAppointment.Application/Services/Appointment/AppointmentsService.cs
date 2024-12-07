@@ -6,6 +6,7 @@ using MedicalAppointment.Application.Dtos.Appointment.Appointments;
 using MedicalAppointment.Application.Responses.Appointment.Appointments;
 using MedicalappointmentApp.Persistance.Interfaces.appointment;
 using MedicalappointmentApp.Persistance.Models.Appointment;
+using MedicalappointmentApp.Persistance.Repositories.Appointment;
 using Microsoft.Extensions.Logging;
 using System.ComponentModel.DataAnnotations;
 
@@ -19,6 +20,10 @@ namespace MedicalAppointment.Application.Services.Appointment
         public AppointmentsService(IAppointmentsRepository appointmentsRepository,
                                    ILogger<AppointmentsService> logger)
         {
+            if (appointmentsRepository is null)
+            {
+                throw new ArgumentNullException(nameof(appointmentsRepository));
+            }
             _appointmentsRepository = appointmentsRepository;
             _logger = logger;
         }
@@ -90,6 +95,7 @@ namespace MedicalAppointment.Application.Services.Appointment
                 appointments.DoctorID = dto.DoctorID;
 
                 var result = await _appointmentsRepository.Save(appointments);
+                result.Message = "La cita fue creada correctamente";
 
             }
             catch (Exception ex)
